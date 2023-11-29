@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 local app = {}
 
 function app:init(input)
