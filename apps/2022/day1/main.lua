@@ -1,6 +1,6 @@
 local app = {}
 
-function app:init(input)
+function app:init1(input)
     
     local elves = {}
     local elves_count = 0
@@ -32,6 +32,10 @@ function app:init(input)
     log("3rd place total: " .. elves[3].total)
     log("all 3 total: " .. elves[1].total + elves[2].total + elves[3].total)
 
+end
+
+function app:init2(input)
+    app:init1(input)
 end
 
 return app
