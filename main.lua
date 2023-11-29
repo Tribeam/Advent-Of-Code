@@ -77,9 +77,25 @@ function love.load(args)
     -- run app
     log("------------------START------------------")
     log(string.format("Starting: '%s/main.lua'", fullpath))
+
+    -- hacky way of appending a prefix to the logs when the app uses the log function
+    function log(msg)
+        msg = "App Message: " .. msg
+        print(msg)
+        logfile:write(tostring(msg) .. "\n")
+    end
+
+    -- run the app's init function
     s = love.timer.getTime()
     app:init(inputtable, inputdata)
     e = love.timer.getTime()-s
+
+    -- hacky way of removing the prefix to the logs when the app is done
+    function log(msg)
+        print(msg)
+        logfile:write(tostring(msg) .. "\n")
+    end
+
     local appmemory = collectgarbage("count")-memory
     log(string.format("Time: '%.3fms'\n", e*1000))
 
