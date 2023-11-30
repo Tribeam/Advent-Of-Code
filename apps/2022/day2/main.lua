@@ -1,7 +1,7 @@
 local app = {}
 
 -- part 1 code
-function app:init1(input)
+function app:part1(input)
 
     local score = 0
 
@@ -46,7 +46,7 @@ function app:init1(input)
 end
 
 -- part 2 code
-function app:init2(input)
+function app:part2(input)
 
     local score = 0
 

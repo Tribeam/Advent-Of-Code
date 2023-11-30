@@ -89,8 +89,8 @@ function love.load(args)
     log(string.format("Loading: '%s/main.lua'", fullpath))
     s = love.timer.getTime()
     local app = require(relpath .. "/main")
-    if(part == 1) then if(type(app.init1) ~= "function") then error("Error: Could not find app's init function.") end end
-    if(part == 2) then if(type(app.init2) ~= "function") then error("Error: Could not find app's init function.") end end
+    if(part == 1) then if(type(app.part1) ~= "function") then error("Error: Could not find app's part1 function.") end end
+    if(part == 2) then if(type(app.part2) ~= "function") then error("Error: Could not find app's part2 function.") end end
     log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
     local memory = collectgarbage("count")
 
@@ -109,12 +109,12 @@ function love.load(args)
     if(part == 1) then 
         
         s = love.timer.getTime()
-        app:init1(inputtable, inputdata)
+        app:part1(inputtable, inputdata)
         e = love.timer.getTime()-s
     end
     if(part == 2) then 
         s = love.timer.getTime()
-        app:init2(inputtable, inputdata)
+        app:part2(inputtable, inputdata)
         e = love.timer.getTime()-s
     end
     

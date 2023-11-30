@@ -1,6 +1,6 @@
 local app = {}
 
-function app:init1(input)
+function app:part1(input)
     
     local elves = {}
     local elves_count = 0
@@ -34,8 +34,8 @@ function app:init1(input)
 
 end
 
-function app:init2(input)
-    app:init1(input)
+function app:part2(input)
+    app:part1(input)
 end
 
 return app

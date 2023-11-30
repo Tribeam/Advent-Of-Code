@@ -1,0 +1,32 @@
+------------------BOOT------------------
+Year: '2022'
+Day: '3'
+Part: '1'
+Relative Path: '/apps/2022/day3'
+App Path: '/apps/2022/day3/main.lua'
+Full Path: 'E:/GitHub/Advent-Of-Code/apps/2022/day3'
+In Path: 'E:/GitHub/Advent-Of-Code/apps/2022/day3/in.txt'
+Out Path: 'E:/GitHub/Advent-Of-Code/apps/2022/day3/out.txt
+Time: '1.031ms'
+
+------------------INPUT------------------
+Loading: 'E:/GitHub/Advent-Of-Code/apps/2022/day3/in.txt'
+Input Chars: '10221'
+Input Lines: '300'
+Time: '0.431ms'
+
+------------------LOAD------------------
+Loading: 'E:/GitHub/Advent-Of-Code/apps/2022/day3/main.lua'
+Time: '5.023ms'
+
+------------------START------------------
+Starting: 'E:/GitHub/Advent-Of-Code/apps/2022/day3/main.lua:(part 1)'
+App Message: 7875
+Time: '1.101ms'
+
+------------------END------------------
+Boot Memory: '586.99kb'
+App Memory: '79.57kb'
+Total Memory: '666.57kb'
+Total Time: '9.970ms'
+
