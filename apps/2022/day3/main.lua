@@ -4,6 +4,11 @@
 
 local app = {}
 
+
+function app:parse(tbl, raw)
+    return tbl
+end
+
 -- part 1 code
 function app:part1(input)
 

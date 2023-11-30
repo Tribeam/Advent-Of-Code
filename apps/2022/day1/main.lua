@@ -1,5 +1,9 @@
 local app = {}
 
+function app:parse(tbl, raw)
+    return tbl
+end
+
 function app:part1(input)
     
     local elves = {}

@@ -23,6 +23,10 @@ function app:checkNumberInside(value, r1, r2)
     return false
 end
 
+function app:parse(tbl, raw)
+    return tbl
+end
+
 -- part 1 code
 function app:part1(input)
     local score = 0

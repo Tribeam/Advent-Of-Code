@@ -98,13 +98,13 @@ function love.load(args)
     log(string.format("Loading: '%s/main.lua'", fullpath))
     s = love.timer.getTime()
     local app = require(relpath .. "/main")
-    if(part == 1) then if(type(app.part1) ~= "function") then error("Error: Could not find app's part1 function.") end end
-    if(part == 2) then if(type(app.part2) ~= "function") then error("Error: Could not find app's part2 function.") end end
+
+    if(type(app.part1) ~= "function") then error("Error: Could not find app's part1 function.") end
+    if(type(app.part2) ~= "function") then error("Error: Could not find app's part2 function.") end
     log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
     local memory = collectgarbage("count")
 
-    -- run app
-    log("------------------START PART 1------------------")
+    log("------------------PART1------------------")
     log(string.format("Starting: '%s/main.lua:(part 1)'", fullpath))
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
@@ -127,7 +127,7 @@ function love.load(args)
     local appmemory = collectgarbage("count")-memory
     log(string.format("Time: '%.3fms'\n", e*1000))
     
-    log("------------------START PART 2------------------")
+    log("------------------PART2------------------")
     log(string.format("Starting: '%s/main.lua:(part 2)'", fullpath))
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
