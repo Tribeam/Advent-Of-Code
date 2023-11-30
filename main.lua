@@ -41,8 +41,6 @@ function love.load(args)
     if(type(tonumber(year)) ~= "number") then error("Error: Year is not a number.") end
     if(day == nil) then error("Error: Day is nil.") end
     if(type(tonumber(day)) ~= "number") then error("Error: Day is not a number.") end    
-    if(part == nil) then error("Error: Part is nil.") end
-    if(type(tonumber(part)) ~= "number") then error("Error: Part is not a number.") end  
 
     -- make paths to app
     local fullpath = string.format("%s/apps/20%i/day%i", love.filesystem.getWorkingDirectory(), year, day)
@@ -53,7 +51,6 @@ function love.load(args)
     log("------------------BOOT------------------")
     log(string.format("Year: '20%i'", year))
     log(string.format("Day: '%i'", day))
-    log(string.format("Part: '%i'", part))
     log(string.format("Relative Path: '%s'", relpath))
     log(string.format("App Path: '%s/main.lua'", relpath))
     log(string.format("Full Path: '%s'", fullpath))
@@ -95,8 +92,8 @@ function love.load(args)
     local memory = collectgarbage("count")
 
     -- run app
-    log("------------------START------------------")
-    log(string.format("Starting: '%s/main.lua:(part %i)'", fullpath, part))
+    log("------------------START PART 1------------------")
+    log(string.format("Starting: '%s/main.lua:(part 1)'", fullpath))
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
     function log(msg)
@@ -105,19 +102,32 @@ function love.load(args)
         logfile:write(tostring(msg) .. "\n")
     end
 
-    -- run the app's init function
-    if(part == 1) then 
-        
-        s = love.timer.getTime()
-        app:part1(inputtable, inputdata)
-        e = love.timer.getTime()-s
+    s = love.timer.getTime()
+    app:part1(inputtable, inputdata)
+    e = love.timer.getTime()-s
+
+    -- hacky way of removing the prefix to the logs when the app is done
+    function log(msg)
+        print(msg)
+        logfile:write(tostring(msg) .. "\n")
     end
-    if(part == 2) then 
-        s = love.timer.getTime()
-        app:part2(inputtable, inputdata)
-        e = love.timer.getTime()-s
-    end
+
+    local appmemory = collectgarbage("count")-memory
+    log(string.format("Time: '%.3fms'\n", e*1000))
     
+    log("------------------START PART 2------------------")
+    log(string.format("Starting: '%s/main.lua:(part 2)'", fullpath))
+
+    -- hacky way of appending a prefix to the logs when the app uses the log function
+    function log(msg)
+        msg = "App Message: " .. msg
+        print(msg)
+        logfile:write(tostring(msg) .. "\n")
+    end
+
+    s = love.timer.getTime()
+    app:part2(inputtable, inputdata)
+    e = love.timer.getTime()-s
 
     -- hacky way of removing the prefix to the logs when the app is done
     function log(msg)
