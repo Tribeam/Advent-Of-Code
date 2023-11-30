@@ -25,6 +25,18 @@ function string.replace(input, find, replace)
     return input:gsub(find, replace)
 end
 
+function logGrid(grid)
+    local str = "\n"
+    for y = 1, #grid do
+        
+        for x = 1, #grid[y] do
+            str = str .. grid[y][x]
+        end
+        str = str .. "\n"
+    end
+    log(str)
+end
+
 
 function love.load(args)
     local s2 = love.timer.getTime()
@@ -97,9 +109,9 @@ function love.load(args)
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
     function log(msg)
-        msg = "App Message: " .. msg
+        msg = "App Message: " .. tostring(msg)
         print(msg)
-        logfile:write(tostring(msg) .. "\n")
+        logfile:write(msg .. "\n")
     end
 
     s = love.timer.getTime()
@@ -120,9 +132,9 @@ function love.load(args)
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
     function log(msg)
-        msg = "App Message: " .. msg
+        msg = "App Message: " .. tostring(msg)
         print(msg)
-        logfile:write(tostring(msg) .. "\n")
+        logfile:write(msg .. "\n")
     end
 
     s = love.timer.getTime()

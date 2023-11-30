@@ -97,7 +97,6 @@ function app:part2(input)
                 score = score + 1
             end
         end
-
     end
     log(score)
 end
