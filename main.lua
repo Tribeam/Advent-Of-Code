@@ -1,8 +1,8 @@
 
 
-
-
-
+local year = 23
+local day = 1
+local examplemode = true
 
 local logfile
 function log(msg)
@@ -44,10 +44,6 @@ function love.load(args)
     local s = love.timer.getTime()
     local e = 0
 
-    local year = tonumber(args[1])
-    local day = tonumber(args[2])
-    local part = tonumber(args[3])
-
     -- error checks
     if(year == nil) then error("Error: Year is nil.") end
     if(type(tonumber(year)) ~= "number") then error("Error: Year is not a number.") end
@@ -63,19 +59,26 @@ function love.load(args)
     log("------------------BOOT------------------")
     log(string.format("Year: '20%i'", year))
     log(string.format("Day: '%i'", day))
+    log(string.format("Example Mode: '%s'", examplemode))
     log(string.format("Relative Path: '%s'", relpath))
-    log(string.format("App Path: '%s/main.lua'", relpath))
+    log(string.format("App Path: '%s/app.lua'", relpath))
     log(string.format("Full Path: '%s'", fullpath))
     log(string.format("In Path: '%s/in.txt'", fullpath))
     log(string.format("Out Path: '%s/out.txt", fullpath))
+    log(string.format("Example Path: '%s/ex.txt", fullpath))
     log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
 
     -- load input file
     log("------------------INPUT------------------")
-    log(string.format("Loading: '%s/in.txt'", fullpath))
+    local filename = "in.txt"
+    if(examplemode == true) then
+        filename = "ex.txt"
+        log("Using Example Input.")
+    end
+    log(string.format("Loading: '%s/%s'", fullpath, filename))
     s = love.timer.getTime()
 
-    local inputfile = io.open(fullpath .. "/in.txt", "r")
+    local inputfile = io.open(string.format("%s/%s", fullpath, filename), "r")
     local inputtable = {}
     local inputdata = ""
     if(inputfile) then
@@ -95,9 +98,9 @@ function love.load(args)
 
     -- load app
     log("------------------LOAD------------------")
-    log(string.format("Loading: '%s/main.lua'", fullpath))
+    log(string.format("Loading: '%s/app.lua'", fullpath))
     s = love.timer.getTime()
-    local app = require(relpath .. "/main")
+    local app = require(relpath .. "/app")
 
     if(type(app.part1) ~= "function") then error("Error: Could not find app's part1 function.") end
     if(type(app.part2) ~= "function") then error("Error: Could not find app's part2 function.") end
@@ -105,7 +108,7 @@ function love.load(args)
     local memory = collectgarbage("count")
 
     log("------------------PART1------------------")
-    log(string.format("Starting: '%s/main.lua:(part 1)'", fullpath))
+    log(string.format("Starting: '%s/app.lua:(part 1)'", fullpath))
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
     function log(msg)
@@ -128,7 +131,7 @@ function love.load(args)
     log(string.format("Time: '%.3fms'\n", e*1000))
     
     log("------------------PART2------------------")
-    log(string.format("Starting: '%s/main.lua:(part 2)'", fullpath))
+    log(string.format("Starting: '%s/app.lua:(part 2)'", fullpath))
 
     -- hacky way of appending a prefix to the logs when the app uses the log function
     function log(msg)

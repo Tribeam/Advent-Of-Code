@@ -1,0 +1,37 @@
+------------------BOOT------------------
+Year: '2023'
+Day: '1'
+Example Mode: 'true'
+Relative Path: '/apps/2023/day1'
+App Path: '/apps/2023/day1/app.lua'
+Full Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1'
+In Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/in.txt'
+Out Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/out.txt
+Example Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/ex.txt
+Time: '1.296ms'
+
+------------------INPUT------------------
+Using Example Input.
+Loading: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/ex.txt'
+Input Chars: '0'
+Input Lines: '0'
+Time: '0.261ms'
+
+------------------LOAD------------------
+Loading: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua'
+Time: '0.163ms'
+
+------------------PART1------------------
+Starting: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua:(part 1)'
+Time: '0.000ms'
+
+------------------PART2------------------
+Starting: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua:(part 2)'
+Time: '0.000ms'
+
+------------------END------------------
+Boot Memory: '546.33kb'
+App Memory: '0.78kb'
+Total Memory: '547.11kb'
+Total Time: '4.471ms'
+
