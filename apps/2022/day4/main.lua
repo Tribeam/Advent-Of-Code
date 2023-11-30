@@ -68,7 +68,7 @@ function app:part2(input)
         local p2r1 = tonumber(ranges[2][1])
         local p2r2 = tonumber(ranges[2][2])
 
-        -- is the first number of the second pair within range of the first pair?
+        -- is the first number of the first pair within range of the second pair?
         local scored = false
         if(self:checkNumberInside(p1r1, p2r1, p2r2)) then
             score = score + 1
@@ -76,7 +76,7 @@ function app:part2(input)
         end
 
         if(not scored) then
-            -- if the second number of the second pair within range of the first 
+            -- is the second number of the first pair within range of the second pair? 
             if(self:checkNumberInside(p1r2, p2r1, p2r2)) then
                 score = score + 1
                 scored = true
@@ -84,7 +84,7 @@ function app:part2(input)
         end
 
         if(not scored) then
-            -- if the second number of the second pair within range of the first 
+            -- is the first number of the second pair within range of the first pair? 
             if(self:checkNumberInside(p2r1, p1r1, p1r2)) then
                 score = score + 1
                 scored = true
@@ -92,7 +92,7 @@ function app:part2(input)
         end
 
         if(not scored) then
-            -- if the second number of the second pair within range of the first 
+            -- if the second number of the second pair within range of the first pair?
             if(self:checkNumberInside(p2r2, p1r1, p1r2)) then
                 score = score + 1
             end
