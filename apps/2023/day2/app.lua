@@ -45,7 +45,6 @@ function app:part1(lines, raw)
             end
         end
         if(not failed) then
-            log(i)
             score = score + i
         end
     end

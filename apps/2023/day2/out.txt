@@ -30,54 +30,6 @@ Options:
 	Input 		= input
 
 ------------------------PART1-----------------------
-App Message: 1
-App Message: 4
-App Message: 7
-App Message: 13
-App Message: 14
-App Message: 15
-App Message: 16
-App Message: 19
-App Message: 20
-App Message: 21
-App Message: 22
-App Message: 25
-App Message: 26
-App Message: 28
-App Message: 30
-App Message: 31
-App Message: 34
-App Message: 35
-App Message: 36
-App Message: 37
-App Message: 39
-App Message: 41
-App Message: 46
-App Message: 47
-App Message: 48
-App Message: 49
-App Message: 50
-App Message: 51
-App Message: 53
-App Message: 54
-App Message: 56
-App Message: 58
-App Message: 59
-App Message: 60
-App Message: 63
-App Message: 64
-App Message: 66
-App Message: 71
-App Message: 75
-App Message: 76
-App Message: 77
-App Message: 84
-App Message: 87
-App Message: 90
-App Message: 91
-App Message: 95
-App Message: 96
-App Message: 98
 App Message: 2278
 
 ------------------------PART2-----------------------
@@ -85,26 +37,26 @@ App Message: 67953
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.126ms
-	Input 		= 0.250ms
-	Input Ex1 	= 0.094ms
-	Input Ex2 	= 0.096ms
-	Input Jumbo 	= 0.058ms
-	Input Total 	= 0.504ms
-	App Load 	= 4.831ms
-	Part 1 		= 16.333ms
-	Part 2 		= 1.721ms
-	App Total 	= 18.054ms
-	Total 		= 27.492ms
+	Boot 		= 0.122ms
+	Input 		= 0.257ms
+	Input Ex1 	= 0.096ms
+	Input Ex2 	= 0.082ms
+	Input Jumbo 	= 0.051ms
+	Input Total 	= 0.493ms
+	App Load 	= 4.679ms
+	Part 1 		= 1.666ms
+	Part 2 		= 1.662ms
+	App Total 	= 3.328ms
+	Total 		= 13.044ms
 Memory:
 	Boot 		= 0.793kb
-	Input 		= 38.805kb
+	Input 		= 34.805kb
 	Input Ex1 	= 1.078kb
 	Input Ex2 	= 0.297kb
 	Input Jumbo 	= 0.273kb
-	Input Total 	= 41.000kb
-	App Load 	= 7.621kb
-	Part 1 		= 383.852kb
-	Part 2 		= -347.584kb
-	App Total 	= 36.268ms
-	Total 		= 89.381kb
+	Input Total 	= 37.000kb
+	App Load 	= 7.610kb
+	Part 1 		= 379.199kb
+	Part 2 		= -333.791kb
+	App Total 	= 45.408ms
+	Total 		= 94.511kb
