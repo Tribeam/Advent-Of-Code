@@ -33,7 +33,7 @@ core =
     params =
     {
         year = 2023,            -- year to load
-        day = 2,                -- day to load
+        day = 1,                -- day to load
     },
 
     -- all the paths
@@ -47,6 +47,7 @@ core =
         example1 = "",
         example2 = "",
         output = "",
+        jumbo = "",
     },
 
     -- file objects
@@ -56,6 +57,7 @@ core =
         example1 = "",
         example2 = "",
         output = "",
+        jumbo = "",
     },
 
     -- raw data of input files
@@ -64,6 +66,7 @@ core =
         input = "",
         example1 = "",
         example2 = "",
+        jumbo = "",
     },
 
     -- line tables of input files
@@ -72,6 +75,7 @@ core =
         input = {},
         example1 = {},
         example2 = {},
+        jumbo = {},
     },
 
     times =
@@ -81,6 +85,7 @@ core =
         load = 0,
         part1 = 0,
         part2 = 0,
+        apptotal = 0,
         total = 0,
     },
     memory =
@@ -141,6 +146,13 @@ function core:fileOpen(path, how)
     return file
 end
 
+function core:fileOpenOptional(path, how)
+    how = how or "r"
+    local file = io.open(path, how)
+    if(not file) then return end
+    return file
+end
+
 -- core functions
 function core:boot()
     self:benchmarkMemory("boot")
@@ -154,6 +166,7 @@ function core:boot()
     self.paths.example1 = string.format("%s/ex1.txt", self.paths.full)
     self.paths.example2 = string.format("%s/ex2.txt", self.paths.full)
     self.paths.output = string.format("%s/out.txt", self.paths.full)
+    self.paths.jumbo = string.format("%s/jumbo.txt", self.paths.full)
     self.files.output = self:fileOpen(self.paths.output, "w")
 
     self.times.boot = self:benchmarkTime("boot")
@@ -179,6 +192,13 @@ function core:input()
     for line in self.files.input:lines() do self.lines.input[#self.lines.input+1] = line end
     for line in self.files.example1:lines() do self.lines.example1[#self.lines.example1+1] = line end
     for line in self.files.example2:lines() do self.lines.example2[#self.lines.example2+1] = line end
+
+    self.files.jumbo = self:fileOpenOptional(self.paths.jumbo)
+    if(self.files.jumbo) then 
+        self.rawdata.jumbo = self.files.jumbo:read("*all") 
+        self.files.jumbo:seek("set", 0)
+        for line in self.files.jumbo:lines() do self.lines.jumbo[#self.lines.jumbo+1] = line end
+    end
 
     self.times.input = self:benchmarkTime("load")
     self.memory.input = self:benchmarkMemory("load")
@@ -220,6 +240,11 @@ function core:runPart1()
         lines = self.lines.example1
         data = self.rawdata.example1
     end
+    if(self.app.options.input == "jumbo") then
+        lines = self.lines.jumbo
+        data = self.rawdata.jumbo
+    end
+
     self:benchmarkMemory("part1")
     self:benchmarkTime("part1")
     self.app:part1(lines, data)
@@ -234,9 +259,13 @@ function core:runPart2()
         lines = self.lines.example2
         data = self.rawdata.example2
     end
+    if(self.app.options.input == "jumbo") then
+        lines = self.lines.jumbo
+        data = self.rawdata.jumbo
+    end
     self:benchmarkMemory("part2")
     self:benchmarkTime("part2")
-    self.app:part2(lines, rawdata)
+    self.app:part2(lines, data)
     self.times.part2 = self:benchmarkTime("part2")
     self.memory.part2 = self:benchmarkMemory("part2")
 end
@@ -253,12 +282,13 @@ function core:load(args)
     self:log("Paths:")
     self:log("\tFull \t\t= %s", self.paths.full)
     self:log("\tRelative \t= %s", self.paths.relative)
-    self:log("\tApp Relative \t= %s", self.paths.app_relative)
+    self:log("\tApp Rel \t= %s", self.paths.app_relative)
     self:log("\tApp Full \t= %s", self.paths.app_full)
     self:log("\tInput \t\t= %s", self.paths.input)
     self:log("\tExample 1 \t= %s", self.paths.example1)
     self:log("\tExample 2 \t= %s", self.paths.example2)
     self:log("\tOutput \t\t= %s", self.paths.output)
+    self:log("\tJumbo \t\t= %s", self.paths.jumbo)
     self:log("")
 
     self:input()
@@ -267,10 +297,12 @@ function core:load(args)
     self:log("\tInput \t\t= %s", #self.rawdata.input)
     self:log("\tExample1 \t= %s", #self.rawdata.example1)
     self:log("\tExample2 \t= %s", #self.rawdata.example2)
+    self:log("\tJumbo \t\t= %s", #self.rawdata.jumbo)
     self:log("Lines:")
     self:log("\tInput \t\t= %s", #self.lines.input)
     self:log("\tExample1 \t= %s", #self.lines.example1)
     self:log("\tExample2 \t= %s", #self.lines.example2)
+    self:log("\tJumbo \t\t= %s", #self.lines.jumbo)
     self:log("")
 
     self:app()
@@ -278,6 +310,7 @@ function core:load(args)
     self:log("Options:")
     self:log("\tInput \t\t= %s", self.app.options.input)
     self:log("")
+
 
     self:log("------------------------PART1-----------------------")
     self:runPart1()

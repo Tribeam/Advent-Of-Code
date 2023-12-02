@@ -11,39 +11,42 @@ Paths:
 	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day1/ex1.txt
 	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2023/day1/ex2.txt
 	Output 		= E:/GitHub/Advent-Of-Code/apps/2023/day1/out.txt
+	Jumbo 		= E:/GitHub/Advent-Of-Code/apps/2023/day1/jumbo.txt
 
 ------------------------INPUT-----------------------
 Sizes:
-	Input 		= 21171
+	Input 		= 21170
 	Example1 	= 40
 	Example2 	= 92
+	Jumbo 		= 105854999
 Lines:
 	Input 		= 1000
 	Example1 	= 4
 	Example2 	= 7
+	Jumbo 		= 5000000
 
 ------------------------APP-------------------------
 Options:
-	Input 		= input
+	Input 		= jumbo
 
 ------------------------PART1-----------------------
-App Message: 54601
+App Message: 273005000
 
 ------------------------PART2-----------------------
-App Message: 54078
+App Message: 270390000
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.125ms
-	Input 		= 0.596ms
-	Load 		= 4.512ms
-	Part 1 		= 0.708ms
-	Part 2 		= 2.455ms
-	Total 		= 11.790ms
+	Boot 		= 0.165ms
+	Input 		= 972.487ms
+	Load 		= 4.685ms
+	Part 1 		= 2345.232ms
+	Part 2 		= 4631.850ms
+	Total 		= 7958.729ms
 Memory:
-	Boot 		= 0.80kb
-	Input 		= 121.66kb
-	Load 		= 6.88kb
-	Part1 		= 4.38kb
-	Part2 		= -31.54kb
-	Total 		= 662.0458984375
+	Boot 		= 0.87kb
+	Input 		= 234246.58kb
+	Load 		= 6.91kb
+	Part1 		= 4.56kb
+	Part2 		= 507.31kb
+	Total 		= 235333.13964844
