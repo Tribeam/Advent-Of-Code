@@ -3,7 +3,7 @@ local app =
     -- internal var, tells core what input to send
     options =
     {
-        input = "example", -- "input", "example"
+        input = "example", -- "input", "example", "jumbo"
     },
 
     -- app vars

@@ -27,34 +27,36 @@ Lines:
 
 ------------------------APP-------------------------
 Options:
-	Input 		= jumbo
+	Input 		= input
 
 ------------------------PART1-----------------------
-App Message: 5506962
+App Message: 54601
 
 ------------------------PART2-----------------------
-App Message: 5664769
+App Message: 54078
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.165ms
-	Input 		= 0.437ms
-	Input Ex1 	= 0.088ms
+	Boot 		= 0.147ms
+	Input 		= 0.498ms
+	Input Ex1 	= 0.084ms
 	Input Ex2 	= 0.080ms
-	Input Jumbo 	= 2736.816ms
-	Input Total 	= 2737.432ms
-	App Load 	= 0.265ms
-	Part 1 		= 16602.220ms
-	Part 2 		= 757.197ms
-	Total 		= 20101.245ms
+	Input Jumbo 	= 2697.180ms
+	Input Total 	= 2697.850ms
+	App Load 	= 0.289ms
+	Part 1 		= 0.679ms
+	Part 2 		= 3.669ms
+	App Total 	= 4.347ms
+	Total 		= 2706.810ms
 Memory:
-	Boot 		= 0.82kb
-	Input 		= 116.82kb
-	Input Ex1 	= 0.50kb
-	Input Ex2 	= 0.71kb
-	Input Jumbo 	= 1702479.74kb
-	Input Total 	= 1702598.49kb
-	App Load 	= 6.81kb
-	Part 1 		= 4.42kb
-	Part 2 		= 39.43kb
-	Total 		= 1702654.07kb
+	Boot 		= 0.793kb
+	Input 		= 120.789kb
+	Input Ex1 	= 0.469kb
+	Input Ex2 	= 0.680kb
+	Input Jumbo 	= 1702479.872kb
+	Input Total 	= 1702602.356kb
+	App Load 	= 6.875kb
+	Part 1 		= 4.516kb
+	Part 2 		= 399.938kb
+	App Total 	= 404.453ms
+	Total 		= 1703018.372kb

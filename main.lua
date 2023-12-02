@@ -132,7 +132,7 @@ function bootstrap:benchmarkTime(name)
         self.benchmarks.times[name].e = love.timer.getTime()
         local time = (self.benchmarks.times[name].e-self.benchmarks.times[name].s)*1000
         self.benchmarks.times[name] = nil
-        return string.format("%.3fms", time)
+        return time
     end
 end
 
@@ -143,7 +143,7 @@ function bootstrap:benchmarkMemory(name)
         self.benchmarks.memories[name].e = collectgarbage("count")
         local mem = self.benchmarks.memories[name].e-self.benchmarks.memories[name].s
         self.benchmarks.memories[name] = nil
-        return string.format("%.2fkb", mem)
+        return mem
     end
 end
 
@@ -346,27 +346,29 @@ function bootstrap:load(args)
     self.memory.total = self:benchmarkMemory("total")
     self:log("------------------------END-------------------------")
     self:log("Times:")
-    self:log("\tBoot \t\t= %s", self.times.boot)
-    self:log("\tInput \t\t= %s", self.times.input)
-    self:log("\tInput Ex1 \t= %s", self.times.example1)
-    self:log("\tInput Ex2 \t= %s", self.times.example2)
-    self:log("\tInput Jumbo \t= %s", self.times.jumbo)
-    self:log("\tInput Total \t= %s", self.times.input_total)
-    self:log("\tApp Load \t= %s", self.times.load)
-    self:log("\tPart 1 \t\t= %s", self.times.part1)
-    self:log("\tPart 2 \t\t= %s", self.times.part2)
-    self:log("\tTotal \t\t= %s", self.times.total)
+    self:log("\tBoot \t\t= %.3fms", self.times.boot)
+    self:log("\tInput \t\t= %.3fms", self.times.input)
+    self:log("\tInput Ex1 \t= %.3fms", self.times.example1)
+    self:log("\tInput Ex2 \t= %.3fms", self.times.example2)
+    self:log("\tInput Jumbo \t= %.3fms", self.times.jumbo)
+    self:log("\tInput Total \t= %.3fms", self.times.input_total)
+    self:log("\tApp Load \t= %.3fms", self.times.load)
+    self:log("\tPart 1 \t\t= %.3fms", self.times.part1)
+    self:log("\tPart 2 \t\t= %.3fms", self.times.part2)
+    self:log("\tApp Total \t= %.3fms", self.times.part1+self.times.part2)
+    self:log("\tTotal \t\t= %.3fms", self.times.total)
     self:log("Memory:")
-    self:log("\tBoot \t\t= %s", self.memory.boot)
-    self:log("\tInput \t\t= %s", self.memory.input)
-    self:log("\tInput Ex1 \t= %s", self.memory.example1)
-    self:log("\tInput Ex2 \t= %s", self.memory.example2)
-    self:log("\tInput Jumbo \t= %s", self.memory.jumbo)
-    self:log("\tInput Total \t= %s", self.memory.input_total)
-    self:log("\tApp Load \t= %s", self.memory.load)
-    self:log("\tPart 1 \t\t= %s", self.memory.part1)
-    self:log("\tPart 2 \t\t= %s", self.memory.part2)
-    self:log("\tTotal \t\t= %s", self.memory.total)
+    self:log("\tBoot \t\t= %.3fkb", self.memory.boot)
+    self:log("\tInput \t\t= %.3fkb", self.memory.input)
+    self:log("\tInput Ex1 \t= %.3fkb", self.memory.example1)
+    self:log("\tInput Ex2 \t= %.3fkb", self.memory.example2)
+    self:log("\tInput Jumbo \t= %.3fkb", self.memory.jumbo)
+    self:log("\tInput Total \t= %.3fkb", self.memory.input_total)
+    self:log("\tApp Load \t= %.3fkb", self.memory.load)
+    self:log("\tPart 1 \t\t= %.3fkb", self.memory.part1)
+    self:log("\tPart 2 \t\t= %.3fkb", self.memory.part2)
+    self:log("\tApp Total \t= %.3fms", self.memory.part1+self.memory.part2)
+    self:log("\tTotal \t\t= %.3fkb", self.memory.total)
     self:filesClose()
 end
 
