@@ -18,43 +18,43 @@ Sizes:
 	Input 		= 21170
 	Example1 	= 40
 	Example2 	= 92
-	Jumbo 		= 105854999
+	Jumbo 		= 601089543
 Lines:
 	Input 		= 1000
 	Example1 	= 4
 	Example2 	= 7
-	Jumbo 		= 5000000
+	Jumbo 		= 100000
 
 ------------------------APP-------------------------
 Options:
 	Input 		= jumbo
 
 ------------------------PART1-----------------------
-App Message: 273005000
+App Message: 5506962
 
 ------------------------PART2-----------------------
-App Message: 270390000
+App Message: 5664769
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.167ms
-	Input 		= 0.533ms
-	Input Ex1 	= 0.101ms
-	Input Ex2 	= 0.087ms
-	Input Jumbo 	= 974.881ms
-	Input Total 	= 975.614ms
-	App Load 	= 0.270ms
-	Part 1 		= 2446.063ms
-	Part 2 		= 4451.922ms
-	Total 		= 7878.641ms
+	Boot 		= 0.165ms
+	Input 		= 0.437ms
+	Input Ex1 	= 0.088ms
+	Input Ex2 	= 0.080ms
+	Input Jumbo 	= 2736.816ms
+	Input Total 	= 2737.432ms
+	App Load 	= 0.265ms
+	Part 1 		= 16602.220ms
+	Part 2 		= 757.197ms
+	Total 		= 20101.245ms
 Memory:
 	Boot 		= 0.82kb
-	Input 		= 120.82kb
+	Input 		= 116.82kb
 	Input Ex1 	= 0.50kb
 	Input Ex2 	= 0.71kb
-	Input Jumbo 	= 234128.40kb
-	Input Total 	= 234251.15kb
-	App Load 	= 6.91kb
-	Part 1 		= 4.56kb
-	Part 2 		= 506.64kb
-	Total 		= 234774.17kb
+	Input Jumbo 	= 1702479.74kb
+	Input Total 	= 1702598.49kb
+	App Load 	= 6.81kb
+	Part 1 		= 4.42kb
+	Part 2 		= 39.43kb
+	Total 		= 1702654.07kb

@@ -35,16 +35,16 @@ Options:
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.154ms
-	Input 		= 0.097ms
-	Input Ex1 	= 0.057ms
-	Input Ex2 	= 0.053ms
-	Input Jumbo 	= 0.048ms
-	Input Total 	= 0.266ms
-	App Load 	= 0.159ms
+	Boot 		= 0.127ms
+	Input 		= 0.072ms
+	Input Ex1 	= 0.054ms
+	Input Ex2 	= 0.051ms
+	Input Jumbo 	= 0.045ms
+	Input Total 	= 0.232ms
+	App Load 	= 0.120ms
 	Part 1 		= 0.000ms
 	Part 2 		= 0.000ms
-	Total 		= 5.584ms
+	Total 		= 3.942ms
 Memory:
 	Boot 		= 0.82kb
 	Input 		= 0.35kb
@@ -53,6 +53,6 @@ Memory:
 	Input Jumbo 	= 0.30kb
 	Input Total 	= 1.84kb
 	App Load 	= 3.06kb
-	Part 1 		= 0.05kb
+	Part 1 		= 0.14kb
 	Part 2 		= 0.11kb
-	Total 		= 9.40kb
+	Total 		= 9.50kb
