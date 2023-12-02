@@ -1,10 +1,19 @@
-local app = {}
+local app = 
+{
+    -- internal var, tells core what input to send
+    options =
+    {
+        input = "example", -- "input", "example"
+    },
 
-function app:part1(input)
+    -- app vars
+}
+
+function app:part1(lines, raw)
 
 end
 
-function app:part2(input)
+function app:part2(lines, raw)
 
 end
 

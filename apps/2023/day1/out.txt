@@ -1,37 +1,49 @@
-------------------BOOT------------------
-Year: '2023'
-Day: '1'
-Example Mode: 'true'
-Relative Path: '/apps/2023/day1'
-App Path: '/apps/2023/day1/app.lua'
-Full Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1'
-In Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/in.txt'
-Out Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/out.txt
-Example Path: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/ex.txt
-Time: '1.296ms'
+------------------------BOOT------------------------
+Params:
+	Year 		 = 2023
+	Day 		 = 1
+Paths:
+	Full 		= E:/GitHub/Advent-Of-Code/apps/2023/day1
+	Relative 	= /apps/2023/day1
+	App Relative 	= /apps/2023/day1/app
+	App Full 	= E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua
+	Input 		= E:/GitHub/Advent-Of-Code/apps/2023/day1/in.txt
+	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day1/ex1.txt
+	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2023/day1/ex2.txt
+	Output 		= E:/GitHub/Advent-Of-Code/apps/2023/day1/out.txt
 
-------------------INPUT------------------
-Using Example Input.
-Loading: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/ex.txt'
-Input Chars: '0'
-Input Lines: '0'
-Time: '0.261ms'
+------------------------INPUT-----------------------
+Sizes:
+	Input 		= 21171
+	Example1 	= 40
+	Example2 	= 92
+Lines:
+	Input 		= 1000
+	Example1 	= 4
+	Example2 	= 7
 
-------------------LOAD------------------
-Loading: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua'
-Time: '0.163ms'
+------------------------APP-------------------------
+Options:
+	Input 		= input
 
-------------------PART1------------------
-Starting: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua:(part 1)'
-Time: '0.000ms'
+------------------------PART1-----------------------
+App Message: 54601
 
-------------------PART2------------------
-Starting: 'E:/GitHub/Advent-Of-Code/apps/2023/day1/app.lua:(part 2)'
-Time: '0.000ms'
+------------------------PART2-----------------------
+App Message: 54078
 
-------------------END------------------
-Boot Memory: '546.33kb'
-App Memory: '0.78kb'
-Total Memory: '547.11kb'
-Total Time: '4.471ms'
-
+------------------------END-------------------------
+Times:
+	Boot 		= 0.125ms
+	Input 		= 0.596ms
+	Load 		= 4.512ms
+	Part 1 		= 0.708ms
+	Part 2 		= 2.455ms
+	Total 		= 11.790ms
+Memory:
+	Boot 		= 0.80kb
+	Input 		= 121.66kb
+	Load 		= 6.88kb
+	Part1 		= 4.38kb
+	Part2 		= -31.54kb
+	Total 		= 662.0458984375

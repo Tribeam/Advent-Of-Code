@@ -1,15 +1,4 @@
 
-
-local year = 23
-local day = 1
-local examplemode = true
-
-local logfile
-function log(msg)
-    print(msg)
-    logfile:write(tostring(msg) .. "\n")
-end
-
 function string.split(input, sep)
     if sep == nil then
         sep = "%s"
@@ -38,127 +27,286 @@ function logGrid(grid)
 end
 
 
-function love.load(args)
-    local s2 = love.timer.getTime()
-    local e2 = 0
-    local s = love.timer.getTime()
-    local e = 0
+core = 
+{
 
-    -- error checks
-    if(year == nil) then error("Error: Year is nil.") end
-    if(type(tonumber(year)) ~= "number") then error("Error: Year is not a number.") end
-    if(day == nil) then error("Error: Day is nil.") end
-    if(type(tonumber(day)) ~= "number") then error("Error: Day is not a number.") end    
+    params =
+    {
+        year = 2023,            -- year to load
+        day = 2,                -- day to load
+    },
 
-    -- make paths to app
-    local fullpath = string.format("%s/apps/20%i/day%i", love.filesystem.getWorkingDirectory(), year, day)
-    local relpath = string.format("/apps/20%i/day%i", year, day)
+    -- all the paths
+    paths = 
+    {
+        full = "",
+        relative = "",
+        app_relative = "",
+        app_full = "",
+        input = "",
+        example1 = "",
+        example2 = "",
+        output = "",
+    },
 
-    -- open logfile
-    logfile = io.open(fullpath .. "/out.txt", "w+")
-    log("------------------BOOT------------------")
-    log(string.format("Year: '20%i'", year))
-    log(string.format("Day: '%i'", day))
-    log(string.format("Example Mode: '%s'", examplemode))
-    log(string.format("Relative Path: '%s'", relpath))
-    log(string.format("App Path: '%s/app.lua'", relpath))
-    log(string.format("Full Path: '%s'", fullpath))
-    log(string.format("In Path: '%s/in.txt'", fullpath))
-    log(string.format("Out Path: '%s/out.txt", fullpath))
-    log(string.format("Example Path: '%s/ex.txt", fullpath))
-    log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
+    -- file objects
+    files =
+    {
+        input = "",
+        example1 = "",
+        example2 = "",
+        output = "",
+    },
 
-    -- load input file
-    log("------------------INPUT------------------")
-    local filename = "in.txt"
-    if(examplemode == true) then
-        filename = "ex.txt"
-        log("Using Example Input.")
-    end
-    log(string.format("Loading: '%s/%s'", fullpath, filename))
-    s = love.timer.getTime()
+    -- raw data of input files
+    rawdata = 
+    {
+        input = "",
+        example1 = "",
+        example2 = "",
+    },
 
-    local inputfile = io.open(string.format("%s/%s", fullpath, filename), "r")
-    local inputtable = {}
-    local inputdata = ""
-    if(inputfile) then
-        inputdata = inputfile:read("*all")
-        inputfile:seek("set", 0)
-        for line in inputfile:lines() do
-            inputtable[#inputtable+1] = line
-        end
-        inputfile:close()
+    -- line tables of input files
+    lines =
+    {
+        input = {},
+        example1 = {},
+        example2 = {},
+    },
+
+    times =
+    {
+        boot = 0,
+        input = 0,
+        load = 0,
+        part1 = 0,
+        part2 = 0,
+        total = 0,
+    },
+    memory =
+    {
+        boot = 0,
+        input = 0,
+        load = 0,
+        part1 = 0,
+        part2 = 0,
+        total = 0,
+    },
+    benchmarks = 
+    {
+        times = {},
+        memories = {},
+    },
+    app = {}, -- the app's functions and vars
+}
+
+-- helper functions
+function core:log(msg, ...)
+    msg = string.format(msg, ...)
+    print(msg)
+    self.files.output:write(msg .. "\n")
+    return msg
+end
+
+function core:logErr(msg, ...)
+    error(self:log(msg, ...))
+end
+
+function core:benchmarkTime(name)
+    if(self.benchmarks.times[name] == nil) then
+        self.benchmarks.times[name] = { s=love.timer.getTime(), e=0 }
     else
-        error("Error: Could not find input file.")
+        self.benchmarks.times[name].e = love.timer.getTime()
+        local time = (self.benchmarks.times[name].e-self.benchmarks.times[name].s)*1000
+        self.benchmarks.times[name] = nil
+        return string.format("%.3fms", time)
     end
-    
-    log(string.format("Input Chars: '%i'", #inputdata))
-    log(string.format("Input Lines: '%i'", #inputtable))
-    log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
+end
 
-    -- load app
-    log("------------------LOAD------------------")
-    log(string.format("Loading: '%s/app.lua'", fullpath))
-    s = love.timer.getTime()
-    local app = require(relpath .. "/app")
+function core:benchmarkMemory(name)
+    if(self.benchmarks.memories[name] == nil) then
+        self.benchmarks.memories[name] = { s=collectgarbage("count"), e=0 }
+    else
+        self.benchmarks.memories[name].e = collectgarbage("count")
+        local mem = self.benchmarks.memories[name].e-self.benchmarks.memories[name].s
+        self.benchmarks.memories[name] = nil
+        return string.format("%.2fkb", mem)
+    end
+end
 
-    if(type(app.part1) ~= "function") then error("Error: Could not find app's part1 function.") end
-    if(type(app.part2) ~= "function") then error("Error: Could not find app's part2 function.") end
-    log(string.format("Time: '%.3fms'\n", (love.timer.getTime()-s)*1000))
-    local memory = collectgarbage("count")
+function core:fileOpen(path, how)
+    how = how or "r"
+    local file = io.open(path, how)
+    if(not file) then self:logErr("Could not open file '%s'", file) end
+    return file
+end
 
-    log("------------------PART1------------------")
-    log(string.format("Starting: '%s/app.lua:(part 1)'", fullpath))
+-- core functions
+function core:boot()
+    self:benchmarkMemory("boot")
+    self:benchmarkTime("boot")
 
-    -- hacky way of appending a prefix to the logs when the app uses the log function
-    function log(msg)
-        msg = "App Message: " .. tostring(msg)
+    self.paths.full = string.format("%s/apps/%i/day%i", love.filesystem.getWorkingDirectory(), self.params.year, self.params.day)
+    self.paths.relative = string.format("/apps/%i/day%i", self.params.year, self.params.day)
+    self.paths.app_relative = string.format("%s/app", self.paths.relative) -- this is for the require function
+    self.paths.app_full = string.format("%s/app.lua", self.paths.full) -- this is for checking if the file exists
+    self.paths.input = string.format("%s/in.txt", self.paths.full)
+    self.paths.example1 = string.format("%s/ex1.txt", self.paths.full)
+    self.paths.example2 = string.format("%s/ex2.txt", self.paths.full)
+    self.paths.output = string.format("%s/out.txt", self.paths.full)
+    self.files.output = self:fileOpen(self.paths.output, "w")
+
+    self.times.boot = self:benchmarkTime("boot")
+    self.memory.boot = self:benchmarkMemory("boot")
+end
+
+function core:input()
+    self:benchmarkMemory("load")
+    self:benchmarkTime("load")
+
+    self.files.input = self:fileOpen(self.paths.input)
+    self.files.example1 = self:fileOpen(self.paths.example1)
+    self.files.example2 = self:fileOpen(self.paths.example2)
+
+    self.rawdata.input = self.files.input:read("*all")
+    self.rawdata.example1 = self.files.example1:read("*all")
+    self.rawdata.example2 = self.files.example2:read("*all")
+
+    self.files.input:seek("set", 0)
+    self.files.example1:seek("set", 0)
+    self.files.example2:seek("set", 0)
+
+    for line in self.files.input:lines() do self.lines.input[#self.lines.input+1] = line end
+    for line in self.files.example1:lines() do self.lines.example1[#self.lines.example1+1] = line end
+    for line in self.files.example2:lines() do self.lines.example2[#self.lines.example2+1] = line end
+
+    self.times.input = self:benchmarkTime("load")
+    self.memory.input = self:benchmarkMemory("load")
+end
+
+function core:app()
+    self:benchmarkMemory("app")
+    self:benchmarkTime("app")
+
+    self.app = require(self.paths.app_relative)
+    if(type(self.app) ~= "table") then self:logErr("Error: App did not return a table.")  end
+    if(type(self.app.part1) ~= "function") then self:logErr("Error: App has no part1 function.") end
+    if(type(self.app.part2) ~= "function") then self:logErr("Error: App has no part2 function.") end
+    if(type(self.app.options) ~= "table") then self:logErr("Error: App has no options.") end
+    if(type(self.app.options.input) ~= "string") then self:logErr("Error: App's input option is not a string.") end
+
+    function log(msg, ...)
+        msg = string.format("App Message: " .. msg, ...)
         print(msg)
-        logfile:write(msg .. "\n")
+        self.files.output:write(msg .. "\n")
+        return msg
     end
 
-    s = love.timer.getTime()
-    app:part1(inputtable, inputdata)
-    e = love.timer.getTime()-s
+    self.times.load = self:benchmarkTime("app")
+    self.memory.load = self:benchmarkMemory("app")
+end
 
-    -- hacky way of removing the prefix to the logs when the app is done
-    function log(msg)
-        print(msg)
-        logfile:write(tostring(msg) .. "\n")
+function core:filesClose()
+    self.files.input:close()
+    self.files.example1:close()
+    self.files.example2:close()
+    self.files.output:close()
+end
+
+function core:runPart1()
+    local lines = self.lines.input
+    local data = self.rawdata.input
+    if(self.app.options.input == "example") then
+        lines = self.lines.example1
+        data = self.rawdata.example1
     end
+    self:benchmarkMemory("part1")
+    self:benchmarkTime("part1")
+    self.app:part1(lines, data)
+    self.times.part1 = self:benchmarkTime("part1")
+    self.memory.part1 = self:benchmarkMemory("part1")
+end
 
-    local appmemory = collectgarbage("count")-memory
-    log(string.format("Time: '%.3fms'\n", e*1000))
-    
-    log("------------------PART2------------------")
-    log(string.format("Starting: '%s/app.lua:(part 2)'", fullpath))
-
-    -- hacky way of appending a prefix to the logs when the app uses the log function
-    function log(msg)
-        msg = "App Message: " .. tostring(msg)
-        print(msg)
-        logfile:write(msg .. "\n")
+function core:runPart2()
+    local lines = self.lines.input
+    local data = self.rawdata.input
+    if(self.app.options.input == "example") then
+        lines = self.lines.example2
+        data = self.rawdata.example2
     end
+    self:benchmarkMemory("part2")
+    self:benchmarkTime("part2")
+    self.app:part2(lines, rawdata)
+    self.times.part2 = self:benchmarkTime("part2")
+    self.memory.part2 = self:benchmarkMemory("part2")
+end
 
-    s = love.timer.getTime()
-    app:part2(inputtable, inputdata)
-    e = love.timer.getTime()-s
+function core:load(args)
 
-    -- hacky way of removing the prefix to the logs when the app is done
-    function log(msg)
-        print(msg)
-        logfile:write(tostring(msg) .. "\n")
-    end
+    self:benchmarkTime("total")
 
-    local appmemory = collectgarbage("count")-memory
-    log(string.format("Time: '%.3fms'\n", e*1000))
+    self:boot()
+    self:log("------------------------BOOT------------------------")
+    self:log("Params:")
+    self:log("\tYear \t\t = %s", self.params.year)
+    self:log("\tDay \t\t = %s", self.params.day)
+    self:log("Paths:")
+    self:log("\tFull \t\t= %s", self.paths.full)
+    self:log("\tRelative \t= %s", self.paths.relative)
+    self:log("\tApp Relative \t= %s", self.paths.app_relative)
+    self:log("\tApp Full \t= %s", self.paths.app_full)
+    self:log("\tInput \t\t= %s", self.paths.input)
+    self:log("\tExample 1 \t= %s", self.paths.example1)
+    self:log("\tExample 2 \t= %s", self.paths.example2)
+    self:log("\tOutput \t\t= %s", self.paths.output)
+    self:log("")
 
-    -- results
-    log("------------------END------------------")
-    log(string.format("Boot Memory: '%.2fkb'", memory))
-    log(string.format("App Memory: '%.2fkb'", appmemory))
-    log(string.format("Total Memory: '%.2fkb'", appmemory+memory))
-    log(string.format("Total Time: '%.3fms'\n", (love.timer.getTime()-s2)*1000))
+    self:input()
+    self:log("------------------------INPUT-----------------------")
+    self:log("Sizes:")
+    self:log("\tInput \t\t= %s", #self.rawdata.input)
+    self:log("\tExample1 \t= %s", #self.rawdata.example1)
+    self:log("\tExample2 \t= %s", #self.rawdata.example2)
+    self:log("Lines:")
+    self:log("\tInput \t\t= %s", #self.lines.input)
+    self:log("\tExample1 \t= %s", #self.lines.example1)
+    self:log("\tExample2 \t= %s", #self.lines.example2)
+    self:log("")
 
-    logfile:close()
+    self:app()
+    self:log("------------------------APP-------------------------")
+    self:log("Options:")
+    self:log("\tInput \t\t= %s", self.app.options.input)
+    self:log("")
+
+    self:log("------------------------PART1-----------------------")
+    self:runPart1()
+    self:log("")
+
+    self:log("------------------------PART2-----------------------")
+    self:runPart2()
+    self:log("")
+
+    self.times.total = self:benchmarkTime("total")
+    self.memory.total = collectgarbage("count")
+    self:log("------------------------END-------------------------")
+    self:log("Times:")
+    self:log("\tBoot \t\t= %s", self.times.boot)
+    self:log("\tInput \t\t= %s", self.times.input)
+    self:log("\tLoad \t\t= %s", self.times.load)
+    self:log("\tPart 1 \t\t= %s", self.times.part1)
+    self:log("\tPart 2 \t\t= %s", self.times.part2)
+    self:log("\tTotal \t\t= %s", self.times.total)
+    self:log("Memory:")
+    self:log("\tBoot \t\t= %s", self.memory.boot)
+    self:log("\tInput \t\t= %s", self.memory.input)
+    self:log("\tLoad \t\t= %s", self.memory.load)
+    self:log("\tPart1 \t\t= %s", self.memory.part1)
+    self:log("\tPart2 \t\t= %s", self.memory.part2)
+    self:log("\tTotal \t\t= %s", self.memory.total)
+    self:filesClose()
+end
+
+function love.load(args)
+    core:load()
 end
