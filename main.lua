@@ -82,6 +82,10 @@ core =
     {
         boot = 0,
         input = 0,
+        example1 = 0,
+        example2 = 0,
+        jumbo = 0,
+        input_total = 0,
         load = 0,
         part1 = 0,
         part2 = 0,
@@ -92,6 +96,10 @@ core =
     {
         boot = 0,
         input = 0,
+        example1 = 0,
+        example2 = 0,
+        jumbo = 0,
+        input_total = 0,
         load = 0,
         part1 = 0,
         part2 = 0,
@@ -174,34 +182,49 @@ function core:boot()
 end
 
 function core:input()
-    self:benchmarkMemory("load")
-    self:benchmarkTime("load")
+    self:benchmarkMemory("input_total")
+    self:benchmarkTime("input_total")
 
+    self:benchmarkMemory("input")
+    self:benchmarkTime("input")
     self.files.input = self:fileOpen(self.paths.input)
-    self.files.example1 = self:fileOpen(self.paths.example1)
-    self.files.example2 = self:fileOpen(self.paths.example2)
-
     self.rawdata.input = self.files.input:read("*all")
-    self.rawdata.example1 = self.files.example1:read("*all")
-    self.rawdata.example2 = self.files.example2:read("*all")
-
     self.files.input:seek("set", 0)
-    self.files.example1:seek("set", 0)
-    self.files.example2:seek("set", 0)
-
     for line in self.files.input:lines() do self.lines.input[#self.lines.input+1] = line end
-    for line in self.files.example1:lines() do self.lines.example1[#self.lines.example1+1] = line end
-    for line in self.files.example2:lines() do self.lines.example2[#self.lines.example2+1] = line end
+    self.times.input = self:benchmarkTime("input")
+    self.memory.input = self:benchmarkMemory("input")
 
+    self:benchmarkMemory("example1")
+    self:benchmarkTime("example1")
+    self.files.example1 = self:fileOpen(self.paths.example1)
+    self.rawdata.example1 = self.files.example1:read("*all")
+    self.files.example1:seek("set", 0)
+    for line in self.files.example1:lines() do self.lines.example1[#self.lines.example1+1] = line end
+    self.times.example1 = self:benchmarkTime("example1")
+    self.memory.example1 = self:benchmarkMemory("example1")
+
+    self:benchmarkMemory("example2")
+    self:benchmarkTime("example2")
+    self.files.example2 = self:fileOpen(self.paths.example2)
+    self.rawdata.example2 = self.files.example2:read("*all")
+    self.files.example2:seek("set", 0)
+    for line in self.files.example2:lines() do self.lines.example2[#self.lines.example2+1] = line end
+    self.times.example2 = self:benchmarkTime("example2")
+    self.memory.example2 = self:benchmarkMemory("example2")
+
+    self:benchmarkMemory("jumbo")
+    self:benchmarkTime("jumbo")
     self.files.jumbo = self:fileOpenOptional(self.paths.jumbo)
     if(self.files.jumbo) then 
         self.rawdata.jumbo = self.files.jumbo:read("*all") 
         self.files.jumbo:seek("set", 0)
         for line in self.files.jumbo:lines() do self.lines.jumbo[#self.lines.jumbo+1] = line end
     end
+    self.times.jumbo = self:benchmarkTime("jumbo")
+    self.memory.jumbo = self:benchmarkMemory("jumbo")
 
-    self.times.input = self:benchmarkTime("load")
-    self.memory.input = self:benchmarkMemory("load")
+    self.times.input_total = self:benchmarkTime("input_total")
+    self.memory.input_total = self:benchmarkMemory("input_total")
 end
 
 function core:app()
@@ -271,14 +294,14 @@ function core:runPart2()
 end
 
 function core:load(args)
-
+    self:benchmarkMemory("total")
     self:benchmarkTime("total")
 
     self:boot()
     self:log("------------------------BOOT------------------------")
     self:log("Params:")
-    self:log("\tYear \t\t = %s", self.params.year)
-    self:log("\tDay \t\t = %s", self.params.day)
+    self:log("\tYear \t\t= %s", self.params.year)
+    self:log("\tDay \t\t= %s", self.params.day)
     self:log("Paths:")
     self:log("\tFull \t\t= %s", self.paths.full)
     self:log("\tRelative \t= %s", self.paths.relative)
@@ -321,21 +344,29 @@ function core:load(args)
     self:log("")
 
     self.times.total = self:benchmarkTime("total")
-    self.memory.total = collectgarbage("count")
+    self.memory.total = self:benchmarkMemory("total")
     self:log("------------------------END-------------------------")
     self:log("Times:")
     self:log("\tBoot \t\t= %s", self.times.boot)
     self:log("\tInput \t\t= %s", self.times.input)
-    self:log("\tLoad \t\t= %s", self.times.load)
+    self:log("\tInput Ex1 \t= %s", self.times.example1)
+    self:log("\tInput Ex2 \t= %s", self.times.example2)
+    self:log("\tInput Jumbo \t= %s", self.times.jumbo)
+    self:log("\tInput Total \t= %s", self.times.input_total)
+    self:log("\tApp Load \t= %s", self.times.load)
     self:log("\tPart 1 \t\t= %s", self.times.part1)
     self:log("\tPart 2 \t\t= %s", self.times.part2)
     self:log("\tTotal \t\t= %s", self.times.total)
     self:log("Memory:")
     self:log("\tBoot \t\t= %s", self.memory.boot)
     self:log("\tInput \t\t= %s", self.memory.input)
-    self:log("\tLoad \t\t= %s", self.memory.load)
-    self:log("\tPart1 \t\t= %s", self.memory.part1)
-    self:log("\tPart2 \t\t= %s", self.memory.part2)
+    self:log("\tInput Ex1 \t= %s", self.memory.example1)
+    self:log("\tInput Ex2 \t= %s", self.memory.example2)
+    self:log("\tInput Jumbo \t= %s", self.memory.jumbo)
+    self:log("\tInput Total \t= %s", self.memory.input_total)
+    self:log("\tApp Load \t= %s", self.memory.load)
+    self:log("\tPart 1 \t\t= %s", self.memory.part1)
+    self:log("\tPart 2 \t\t= %s", self.memory.part2)
     self:log("\tTotal \t\t= %s", self.memory.total)
     self:filesClose()
 end
