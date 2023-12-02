@@ -27,13 +27,13 @@ function logGrid(grid)
 end
 
 
-core = 
+bootstrap = 
 {
 
     params =
     {
         year = 2023,            -- year to load
-        day = 1,                -- day to load
+        day = 2,                -- day to load
     },
 
     -- all the paths
@@ -114,18 +114,18 @@ core =
 }
 
 -- helper functions
-function core:log(msg, ...)
+function bootstrap:log(msg, ...)
     msg = string.format(msg, ...)
     print(msg)
     self.files.output:write(msg .. "\n")
     return msg
 end
 
-function core:logErr(msg, ...)
+function bootstrap:logErr(msg, ...)
     error(self:log(msg, ...))
 end
 
-function core:benchmarkTime(name)
+function bootstrap:benchmarkTime(name)
     if(self.benchmarks.times[name] == nil) then
         self.benchmarks.times[name] = { s=love.timer.getTime(), e=0 }
     else
@@ -136,7 +136,7 @@ function core:benchmarkTime(name)
     end
 end
 
-function core:benchmarkMemory(name)
+function bootstrap:benchmarkMemory(name)
     if(self.benchmarks.memories[name] == nil) then
         self.benchmarks.memories[name] = { s=collectgarbage("count"), e=0 }
     else
@@ -147,14 +147,14 @@ function core:benchmarkMemory(name)
     end
 end
 
-function core:fileOpen(path, how)
+function bootstrap:fileOpen(path, how)
     how = how or "r"
     local file = io.open(path, how)
     if(not file) then self:logErr("Could not open file '%s'", file) end
     return file
 end
 
-function core:fileOpenOptional(path, how)
+function bootstrap:fileOpenOptional(path, how)
     how = how or "r"
     local file = io.open(path, how)
     if(not file) then return end
@@ -162,7 +162,7 @@ function core:fileOpenOptional(path, how)
 end
 
 -- core functions
-function core:boot()
+function bootstrap:boot()
     self:benchmarkMemory("boot")
     self:benchmarkTime("boot")
 
@@ -181,7 +181,7 @@ function core:boot()
     self.memory.boot = self:benchmarkMemory("boot")
 end
 
-function core:input()
+function bootstrap:input()
     self:benchmarkMemory("input_total")
     self:benchmarkTime("input_total")
 
@@ -227,7 +227,7 @@ function core:input()
     self.memory.input_total = self:benchmarkMemory("input_total")
 end
 
-function core:app()
+function bootstrap:app()
     self:benchmarkMemory("app")
     self:benchmarkTime("app")
 
@@ -249,14 +249,14 @@ function core:app()
     self.memory.load = self:benchmarkMemory("app")
 end
 
-function core:filesClose()
+function bootstrap:filesClose()
     self.files.input:close()
     self.files.example1:close()
     self.files.example2:close()
     self.files.output:close()
 end
 
-function core:runPart1()
+function bootstrap:runPart1()
     local lines = self.lines.input
     local data = self.rawdata.input
     if(self.app.options.input == "example") then
@@ -275,7 +275,7 @@ function core:runPart1()
     self.memory.part1 = self:benchmarkMemory("part1")
 end
 
-function core:runPart2()
+function bootstrap:runPart2()
     local lines = self.lines.input
     local data = self.rawdata.input
     if(self.app.options.input == "example") then
@@ -293,7 +293,7 @@ function core:runPart2()
     self.memory.part2 = self:benchmarkMemory("part2")
 end
 
-function core:load(args)
+function bootstrap:load(args)
     self:benchmarkMemory("total")
     self:benchmarkTime("total")
 
@@ -334,7 +334,6 @@ function core:load(args)
     self:log("\tInput \t\t= %s", self.app.options.input)
     self:log("")
 
-
     self:log("------------------------PART1-----------------------")
     self:runPart1()
     self:log("")
@@ -372,5 +371,5 @@ function core:load(args)
 end
 
 function love.load(args)
-    core:load()
+    bootstrap:load()
 end

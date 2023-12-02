@@ -1,11 +1,11 @@
 ------------------------BOOT------------------------
 Params:
-	Year 		 = 2023
-	Day 		 = 2
+	Year 		= 2023
+	Day 		= 2
 Paths:
 	Full 		= E:/GitHub/Advent-Of-Code/apps/2023/day2
 	Relative 	= /apps/2023/day2
-	App Relative 	= /apps/2023/day2/app
+	App Rel 	= /apps/2023/day2/app
 	App Full 	= E:/GitHub/Advent-Of-Code/apps/2023/day2/app.lua
 	Input 		= E:/GitHub/Advent-Of-Code/apps/2023/day2/in.txt
 	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day2/ex1.txt
@@ -35,16 +35,24 @@ Options:
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.162ms
-	Input 		= 0.220ms
-	Load 		= 0.125ms
+	Boot 		= 0.154ms
+	Input 		= 0.097ms
+	Input Ex1 	= 0.057ms
+	Input Ex2 	= 0.053ms
+	Input Jumbo 	= 0.048ms
+	Input Total 	= 0.266ms
+	App Load 	= 0.159ms
 	Part 1 		= 0.000ms
 	Part 2 		= 0.000ms
-	Total 		= 4.563ms
+	Total 		= 5.584ms
 Memory:
-	Boot 		= 0.87kb
-	Input 		= 0.66kb
-	Load 		= 3.06kb
-	Part1 		= 0.14kb
-	Part2 		= 0.11kb
-	Total 		= 566.9345703125
+	Boot 		= 0.82kb
+	Input 		= 0.35kb
+	Input Ex1 	= 0.26kb
+	Input Ex2 	= 0.26kb
+	Input Jumbo 	= 0.30kb
+	Input Total 	= 1.84kb
+	App Load 	= 3.06kb
+	Part 1 		= 0.05kb
+	Part 2 		= 0.11kb
+	Total 		= 9.40kb
