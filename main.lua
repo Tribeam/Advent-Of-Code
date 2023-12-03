@@ -27,13 +27,14 @@ function logGrid(grid)
 end
 
 
+
 bootstrap = 
 {
 
     params =
     {
         year = 2023,            -- year to load
-        day = 2,                -- day to load
+        day = 3,                -- day to load
     },
 
     -- all the paths
@@ -239,6 +240,7 @@ function bootstrap:app()
     if(type(self.app.options.input) ~= "string") then self:logErr("Error: App's input option is not a string.") end
 
     function log(msg, ...)
+        msg = tostring(msg)
         msg = string.format("App Message: " .. msg, ...)
         print(msg)
         self.files.output:write(msg .. "\n")

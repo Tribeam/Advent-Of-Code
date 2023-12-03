@@ -65,6 +65,7 @@ function app:part2(lines, raw)
         local red = 0
         local green = 0
         local blue = 0
+        
         -- split the colors
         for i2, v2 in ipairs(groups) do
 

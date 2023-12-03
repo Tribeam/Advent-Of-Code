@@ -37,17 +37,17 @@ App Message: 67953
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.122ms
-	Input 		= 0.257ms
-	Input Ex1 	= 0.096ms
-	Input Ex2 	= 0.082ms
-	Input Jumbo 	= 0.051ms
-	Input Total 	= 0.493ms
-	App Load 	= 4.679ms
-	Part 1 		= 1.666ms
-	Part 2 		= 1.662ms
-	App Total 	= 3.328ms
-	Total 		= 13.044ms
+	Boot 		= 0.141ms
+	Input 		= 4.412ms
+	Input Ex1 	= 0.103ms
+	Input Ex2 	= 0.527ms
+	Input Jumbo 	= 0.063ms
+	Input Total 	= 5.113ms
+	App Load 	= 3.916ms
+	Part 1 		= 1.514ms
+	Part 2 		= 1.482ms
+	App Total 	= 2.997ms
+	Total 		= 16.375ms
 Memory:
 	Boot 		= 0.793kb
 	Input 		= 34.805kb
@@ -56,7 +56,7 @@ Memory:
 	Input Jumbo 	= 0.273kb
 	Input Total 	= 37.000kb
 	App Load 	= 7.610kb
-	Part 1 		= 379.199kb
-	Part 2 		= -333.791kb
-	App Total 	= 45.408ms
-	Total 		= 94.511kb
+	Part 1 		= 380.203kb
+	Part 2 		= -331.553kb
+	App Total 	= 48.650ms
+	Total 		= 97.753kb
