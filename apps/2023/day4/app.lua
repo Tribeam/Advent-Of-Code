@@ -17,12 +17,10 @@ function app:part1(lines, raw)
     for l, v in ipairs(lines) do
         local split1 = aoclib:split(lines[l], ":")
         local split2 = aoclib:split(split1[2], "|")
-        win_nums = split2[1]
-        play_nums = split2[2]
 
         cards[l] = {}
-        cards[l].win_nums = aoclib:split(win_nums, " ")
-        cards[l].play_nums = aoclib:split(play_nums, " ")
+        cards[l].win_nums = aoclib:split(split2[1], " ")
+        cards[l].play_nums = aoclib:split(split2[2], " ")
         cards[l].matches = {}
         cards[l].score = 0
         cards[l].count = 1
