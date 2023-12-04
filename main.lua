@@ -1,31 +1,6 @@
 
-function string.split(input, sep)
-    if sep == nil then
-        sep = "%s"
-    end
-    local t = {}
-    for str in string.gmatch(input, "([^" .. sep .. "]+)") do
-        table.insert(t, str)
-    end
-    return t
-end
 
-function string.replace(input, find, replace)
-    return input:gsub(find, replace)
-end
-
-function logGrid(grid)
-    local str = "\n"
-    for y = 1, #grid do
-        
-        for x = 1, #grid[y] do
-            str = str .. grid[y][x]
-        end
-        str = str .. "\n"
-    end
-    log(str)
-end
-
+aoclib = require "aoclib"
 
 
 bootstrap = 
@@ -33,8 +8,8 @@ bootstrap =
 
     params =
     {
-        year = 2022,            -- year to load
-        day = 10,                -- day to load
+        year = 2023,            -- year to load
+        day = 3,                -- day to load
     },
 
     -- all the paths

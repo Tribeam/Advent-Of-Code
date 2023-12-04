@@ -67,8 +67,8 @@ function app:part1(lines, raw, part2)
     -- some data restructure
     if(not part2) then
         for l, v in ipairs(lines) do
-            lines[l] = string.replace(lines[l], "noop", "0")
-            lines[l] = string.replace(lines[l], "addx ", "")
+            lines[l] = aoclib:replace(lines[l], "noop", "0")
+            lines[l] = aoclib:replace(lines[l], "addx ", "")
             lines[l] = tonumber(lines[l])
         end
     end
@@ -108,6 +108,7 @@ function app:part2(lines)
 end
 
 function app:draw()
+    love.graphics.setColor(1,1,1,1)
     love.graphics.draw(self.canvas, 1, 1)
 end
 

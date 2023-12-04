@@ -25,7 +25,7 @@ function app:part1(lines)
             local char = v:sub(c, c)
 
             -- is the char a number?
-            if(type(tonumber(char)) == "number") then
+            if(aoclib:isNumber(char)) then
                 num1 = char
                 break;
             end
@@ -36,7 +36,7 @@ function app:part1(lines)
             local char = v:sub(c, c)
 
             -- is the char a number?
-            if(type(tonumber(char)) == "number") then
+            if(aoclib:isNumber(char)) then
                 num2 = char
                 break;
             end
@@ -65,12 +65,12 @@ function app:part2(lines)
             local char = v:sub(c, c)
 
             -- is the char a number?
-            if(type(tonumber(char)) == "number") then
+            if(aoclib:isNumber(char)) then
                 num1 = char
                 break;
 
             -- is the char a letter?
-            elseif(type(char) == "string") then
+            elseif(aoclib:isString(char)) then
                 local num = 0
 
                 for i2, v2 in ipairs(self.numbers) do
@@ -93,12 +93,12 @@ function app:part2(lines)
             local char = v:sub(c, c)
 
             -- is the char a number?
-            if(type(tonumber(char)) == "number") then
+            if(aoclib:isNumber(char)) then
                 num2 = char
                 break;
 
             -- is the char a letter?
-            elseif(type(char) == "string") then
+            elseif(aoclib:isString(char)) then
                 local num = 0
 
                 for i2, v2 in ipairs(self.numbers) do

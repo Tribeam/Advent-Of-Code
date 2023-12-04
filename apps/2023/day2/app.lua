@@ -18,19 +18,19 @@ function app:part1(lines, raw)
         local failed = false
 
         -- split game id from groups
-        local split1 = string.split(v, ":")
+        local split1 = aoclib:split(v, ":")
 
         -- split groups
-        local groups = string.split(split1[2], ";")
+        local groups = aoclib:split(split1[2], ";")
 
         -- split the colors
         for i2, v2 in ipairs(groups) do
 
             -- split the values
-            local colors = string.split(v2, ",")
+            local colors = aoclib:split(v2, ",")
             for i3, v3 in ipairs(colors) do
-                local parts = string.split(v3, " ")
-                parts[2] = string.replace(parts[2], " ", "")
+                local parts = aoclib:split(v3, " ")
+                parts[2] = aoclib:replace(parts[2], " ", "")
                 parts[1] = tonumber(parts[1])
 
                 if(parts[2] == "red" and parts[1] > 12) then
@@ -57,10 +57,10 @@ function app:part2(lines, raw)
     for i, v in ipairs(lines) do
 
         -- split game id from groups
-        local split1 = string.split(v, ":")
+        local split1 = aoclib:split(v, ":")
 
         -- split groups
-        local groups = string.split(split1[2], ";")
+        local groups = aoclib:split(split1[2], ";")
 
         local red = 0
         local green = 0
@@ -70,11 +70,11 @@ function app:part2(lines, raw)
         for i2, v2 in ipairs(groups) do
 
             -- split the values
-            local colors = string.split(v2, ",")
+            local colors = aoclib:split(v2, ",")
 
             for i3, v3 in ipairs(colors) do
-                local parts = string.split(v3, " ")
-                parts[2] = string.replace(parts[2], " ", "")
+                local parts = aoclib:split(v3, " ")
+                parts[2] = aoclib:replace(parts[2], " ", "")
                 parts[1] = tonumber(parts[1])
 
                 if(parts[2] == "red") then

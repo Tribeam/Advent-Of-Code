@@ -19,12 +19,7 @@ function app:part1(lines, raw, part2)
     local xsize = #lines[1]
     local ysize = #lines
 
-    for y = 1, ysize do
-        grid[y] = {}
-        for x = 1, xsize do
-            grid[y][x] = ""
-        end
-    end
+    grid = aoclib:buildGrid(xsize, ysize)
 
     -- convert the input into a grid
     -- for each line
@@ -41,12 +36,12 @@ function app:part1(lines, raw, part2)
             local char3 = v:sub(c+2, c+2)
 
             -- check if digits exist and stack them onto the result
-            if(type(tonumber(char1)) == "number") then 
+            if(aoclib:isNumber(char1)) then 
                 result = result .. char1
 
-                if(type(tonumber(char2)) == "number") then 
+                if(aoclib:isNumber(char2)) then 
                     result = result .. char2 
-                    if(type(tonumber(char3)) == "number") then 
+                    if(aoclib:isNumber(char3)) then 
                         result = result .. char3 
                     end
                 end
@@ -89,7 +84,7 @@ function app:part1(lines, raw, part2)
             for y = y_start, y_end do
                 for x = x_start, x_end do
                     if(grid[y] ~= nil and grid[y][x] ~= nil) then
-                        if(grid[y][x] ~= "." and type(tonumber(grid[y][x])) ~= "number") then
+                        if(grid[y][x] ~= "." and aoclib:isNumber(grid[y][x])) then
                             score = score + v[4]
                             return
                         end
@@ -129,7 +124,7 @@ function app:part2(lines)
                     -- is this a valid grid spot?
                     if(grid[y] ~= nil and grid[y][x] ~= nil) then
                         -- is this grid spot a number?
-                        if(type(tonumber(grid[y][x])) == "number") then
+                        if(aoclib:isNumber(grid[y][x])) then
                             for d = x-2, x+2 do
                                 
                                 for n, v2 in ipairs(number_spots) do
