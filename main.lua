@@ -33,8 +33,8 @@ bootstrap =
 
     params =
     {
-        year = 2023,            -- year to load
-        day = 3,                -- day to load
+        year = 2022,            -- year to load
+        day = 10,                -- day to load
     },
 
     -- all the paths
@@ -376,4 +376,20 @@ end
 
 function love.load(args)
     bootstrap:load()
+end
+
+function love.draw()
+    if(bootstrap.app ~= nil) then 
+        if(bootstrap.app.draw ~= nil) then  
+            bootstrap.app:draw()
+        end
+    end
+end
+
+function love.update(dt)
+    if(bootstrap.app ~= nil) then 
+        if(bootstrap.app.update ~= nil) then  
+            bootstrap.app:update(dt)
+        end
+    end
 end

@@ -1,0 +1,62 @@
+------------------------BOOT------------------------
+Params:
+	Year 		= 2022
+	Day 		= 10
+Paths:
+	Full 		= E:/GitHub/Advent-Of-Code/apps/2022/day10
+	Relative 	= /apps/2022/day10
+	App Rel 	= /apps/2022/day10/app
+	App Full 	= E:/GitHub/Advent-Of-Code/apps/2022/day10/app.lua
+	Input 		= E:/GitHub/Advent-Of-Code/apps/2022/day10/in.txt
+	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2022/day10/ex1.txt
+	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2022/day10/ex2.txt
+	Output 		= E:/GitHub/Advent-Of-Code/apps/2022/day10/out.txt
+	Jumbo 		= E:/GitHub/Advent-Of-Code/apps/2022/day10/jumbo.txt
+
+------------------------INPUT-----------------------
+Sizes:
+	Input 		= 966
+	Example1 	= 979
+	Example2 	= 979
+	Jumbo 		= 0
+Lines:
+	Input 		= 143
+	Example1 	= 146
+	Example2 	= 146
+	Jumbo 		= 0
+
+------------------------APP-------------------------
+Options:
+	Input 		= input
+
+------------------------PART1-----------------------
+App Message: 11220
+
+------------------------PART2-----------------------
+App Message: 0
+
+------------------------END-------------------------
+Times:
+	Boot 		= 0.168ms
+	Input 		= 0.211ms
+	Input Ex1 	= 0.136ms
+	Input Ex2 	= 0.124ms
+	Input Jumbo 	= 0.055ms
+	Input Total 	= 0.532ms
+	App Load 	= 6.066ms
+	Part 1 		= 0.442ms
+	Part 2 		= 0.801ms
+	App Total 	= 1.243ms
+	Total 		= 14.400ms
+Memory:
+	Boot 		= 0.820kb
+	Input 		= 6.766kb
+	Input Ex1 	= 4.625kb
+	Input Ex2 	= 3.059kb
+	Input Jumbo 	= 0.273kb
+	Input Total 	= 15.270kb
+	App Load 	= 10.279kb
+	Part 1 		= 20.926kb
+	Part 2 		= 4.000kb
+	App Total 	= 24.926ms
+	Total 		= 55.010kb

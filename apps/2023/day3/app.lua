@@ -151,8 +151,6 @@ function app:part2(lines)
             end
 
         if(#numbers_found == 2) then
-            love.graphics.setColor(1, 0, 0, 0.5)
-            love.graphics.rectangle("fill", (v[1]-1)*12, (v[2]-1)*12, 12*3, 12*3)
             score = score + (numbers_found[1]*numbers_found[2])
         end
     end
