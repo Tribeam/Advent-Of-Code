@@ -20,7 +20,6 @@ function app:part1(lines, raw, part2)
     local ysize = #lines
 
     grid = aoclib:buildGrid(xsize, ysize)
-
     -- convert the input into a grid
     -- for each line
     for l, v in ipairs(lines) do

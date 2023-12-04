@@ -9,7 +9,7 @@ bootstrap =
     params =
     {
         year = 2023,            -- year to load
-        day = 3,                -- day to load
+        day = 4,                -- day to load
     },
 
     -- all the paths
@@ -85,6 +85,10 @@ bootstrap =
     {
         times = {},
         memories = {},
+    },
+    drawing = 
+    {
+        canvas = love.graphics.newCanvas(),
     },
     app = {}, -- the app's functions and vars
 }
@@ -289,6 +293,7 @@ function bootstrap:load(args)
     self:log("\tExample 2 \t= %s", self.paths.example2)
     self:log("\tOutput \t\t= %s", self.paths.output)
     self:log("\tJumbo \t\t= %s", self.paths.jumbo)
+
     self:log("")
 
     self:input()
@@ -311,6 +316,7 @@ function bootstrap:load(args)
     self:log("\tInput \t\t= %s", self.app.options.input)
     self:log("")
 
+    love.graphics.setCanvas(self.drawing.canvas)
     self:log("------------------------PART1-----------------------")
     self:runPart1()
     self:log("")
@@ -318,6 +324,7 @@ function bootstrap:load(args)
     self:log("------------------------PART2-----------------------")
     self:runPart2()
     self:log("")
+    love.graphics.setCanvas()
 
     self.times.total = self:benchmarkTime("total")
     self.memory.total = self:benchmarkMemory("total")
@@ -357,6 +364,8 @@ function love.draw()
     if(bootstrap.app ~= nil) then 
         if(bootstrap.app.draw ~= nil) then  
             bootstrap.app:draw()
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.draw(bootstrap.drawing.canvas, 1, 1)
         end
     end
 end

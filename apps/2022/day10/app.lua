@@ -16,7 +16,6 @@ local app =
     addx_cycles = 0,
     screenw = 40,
     screenh = 6,
-    canvas = love.graphics.newCanvas(),
     screenx = 0,
     screeny = 0,
 }
@@ -97,19 +96,15 @@ function app:part2(lines)
     self.canvas = love.graphics.newCanvas()
     self.screenx = 0
     self.screeny = 0
-
-    love.graphics.setCanvas(self.canvas)
-    love.graphics.clear(0, 0, 0, 1)
     
+    love.graphics.clear(0, 0, 0, 1)
     self:part1(lines, nil, true)
     log(self.score2)
 
-    love.graphics.setCanvas()
 end
 
 function app:draw()
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.draw(self.canvas, 1, 1)
+
 end
 
 

@@ -37,17 +37,17 @@ App Message: 0
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.123ms
-	Input 		= 0.210ms
-	Input Ex1 	= 0.129ms
-	Input Ex2 	= 0.119ms
-	Input Jumbo 	= 0.054ms
-	Input Total 	= 0.517ms
-	App Load 	= 5.898ms
-	Part 1 		= 0.497ms
-	Part 2 		= 0.749ms
-	App Total 	= 1.246ms
-	Total 		= 12.214ms
+	Boot 		= 0.131ms
+	Input 		= 3.577ms
+	Input Ex1 	= 4.053ms
+	Input Ex2 	= 0.507ms
+	Input Jumbo 	= 0.092ms
+	Input Total 	= 8.238ms
+	App Load 	= 3.905ms
+	Part 1 		= 0.576ms
+	Part 2 		= 0.837ms
+	App Total 	= 1.412ms
+	Total 		= 19.153ms
 Memory:
 	Boot 		= 0.820kb
 	Input 		= 6.766kb
@@ -55,8 +55,8 @@ Memory:
 	Input Ex2 	= 3.059kb
 	Input Jumbo 	= 0.273kb
 	Input Total 	= 15.270kb
-	App Load 	= 9.586kb
-	Part 1 		= 26.324kb
-	Part 2 		= 8.313kb
-	App Total 	= 34.637ms
-	Total 		= 64.027kb
+	App Load 	= 8.745kb
+	Part 1 		= 26.734kb
+	Part 2 		= 18.219kb
+	App Total 	= 44.953ms
+	Total 		= 73.503kb

@@ -57,4 +57,18 @@ function aoclib:logGrid(grid)
     log(str)
 end
 
+-- print a table
+function aoclib:logTable(tbl, indent)
+    indent = indent or 0
+    for k, v in pairs(tbl) do
+        formatting = string.rep("  ", indent) .. k .. ": "
+        if type(v) == "table" then
+            log(formatting)
+            self:logTable(v, indent + 1)
+        else
+            log(formatting .. tostring(v))
+        end
+    end
+end
+
 return aoclib
