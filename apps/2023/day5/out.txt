@@ -1,0 +1,27 @@
+------------------------BOOT------------------------
+Params:
+	Year 		= 2023
+	Day 		= 5
+Paths:
+	Full 		= E:/GitHub/Advent-Of-Code/apps/2023/day5
+	Relative 	= /apps/2023/day5
+	App Rel 	= /apps/2023/day5/app
+	App Full 	= E:/GitHub/Advent-Of-Code/apps/2023/day5/app.lua
+	Input 		= E:/GitHub/Advent-Of-Code/apps/2023/day5/in.txt
+	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day5/ex1.txt
+	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2023/day5/ex2.txt
+	Output 		= E:/GitHub/Advent-Of-Code/apps/2023/day5/out.txt
+	Jumbo 		= E:/GitHub/Advent-Of-Code/apps/2023/day5/jumbo.txt
+
+------------------------INPUT-----------------------
+Sizes:
+	Input 		= 6382
+	Example1 	= 339
+	Example2 	= 0
+	Jumbo 		= 0
+Lines:
+	Input 		= 213
+	Example1 	= 33
+	Example2 	= 0
+	Jumbo 		= 0
+

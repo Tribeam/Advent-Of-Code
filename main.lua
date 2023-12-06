@@ -1,7 +1,7 @@
 
 
 aoclib = require "aoclib"
-
+string_buffer = require("string.buffer")
 
 bootstrap = 
 {
@@ -9,7 +9,7 @@ bootstrap =
     params =
     {
         year = 2023,            -- year to load
-        day = 4,                -- day to load
+        day = 6,                -- day to load
     },
 
     -- all the paths
@@ -334,8 +334,8 @@ function bootstrap:load(args)
     self:log("\tInput \t\t= %.3fms", self.times.input)
     self:log("\tInput Ex1 \t= %.3fms", self.times.example1)
     self:log("\tInput Ex2 \t= %.3fms", self.times.example2)
-    self:log("\tInput Jumbo \t= %.3fms", self.times.jumbo)
-    self:log("\tInput Total \t= %.3fms", self.times.input_total)
+    self:log("\tInput Jumbo = %.3fms", self.times.jumbo)
+    self:log("\tInput Total = %.3fms", self.times.input_total)
     self:log("\tApp Load \t= %.3fms", self.times.load)
     self:log("\tPart 1 \t\t= %.3fms", self.times.part1)
     self:log("\tPart 2 \t\t= %.3fms", self.times.part2)
@@ -346,8 +346,8 @@ function bootstrap:load(args)
     self:log("\tInput \t\t= %.3fkb", self.memory.input)
     self:log("\tInput Ex1 \t= %.3fkb", self.memory.example1)
     self:log("\tInput Ex2 \t= %.3fkb", self.memory.example2)
-    self:log("\tInput Jumbo \t= %.3fkb", self.memory.jumbo)
-    self:log("\tInput Total \t= %.3fkb", self.memory.input_total)
+    self:log("\tInput Jumbo = %.3fkb", self.memory.jumbo)
+    self:log("\tInput Total = %.3fkb", self.memory.input_total)
     self:log("\tApp Load \t= %.3fkb", self.memory.load)
     self:log("\tPart 1 \t\t= %.3fkb", self.memory.part1)
     self:log("\tPart 2 \t\t= %.3fkb", self.memory.part2)

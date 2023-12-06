@@ -14,7 +14,7 @@ function app:part1(lines, raw)
     local score = 0
     local cards = {}
     
-    for l, v in ipairs(lines) do
+    for l = 1, #lines do
         local split1 = aoclib:split(lines[l], ":")
         local split2 = aoclib:split(split1[2], "|")
 
@@ -61,7 +61,7 @@ function app:part2(lines, raw)
     local cards = self:part1(lines, raw)
 
     -- for each card
-    for c, v in ipairs(cards) do
+    for c = 1, #cards do
 
         -- for each instance of a card
         for instance = 1, cards[c].count do
