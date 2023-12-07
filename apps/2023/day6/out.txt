@@ -37,17 +37,17 @@ App Message: 45128024
 
 ------------------------END-------------------------
 Times:
-	Boot 		= 0.127ms
-	Input 		= 0.149ms
-	Input Ex1 	= 0.081ms
-	Input Ex2 	= 0.074ms
-	Input Jumbo = 0.066ms
-	Input Total = 0.374ms
-	App Load 	= 4.396ms
-	Part 1 		= 1791.902ms
-	Part 2 		= 1785.359ms
-	App Total 	= 3577.261ms
-	Total 		= 3585.798ms
+	Boot 		= 0.140ms
+	Input 		= 2.423ms
+	Input Ex1 	= 2.344ms
+	Input Ex2 	= 0.391ms
+	Input Jumbo = 0.073ms
+	Input Total = 5.241ms
+	App Load 	= 0.235ms
+	Part 1 		= 237.348ms
+	Part 2 		= 235.324ms
+	App Total 	= 472.672ms
+	Total 		= 483.058ms
 Memory:
 	Boot 		= 0.793kb
 	Input 		= 0.566kb
@@ -55,8 +55,8 @@ Memory:
 	Input Ex2 	= 0.250kb
 	Input Jumbo = 0.273kb
 	Input Total = 2.047kb
-	App Load 	= 5.116kb
-	Part 1 		= 4.840kb
+	App Load 	= 5.185kb
+	Part 1 		= 4.215kb
 	Part 2 		= 1.645kb
-	App Total 	= 6.484ms
-	Total 		= 18.093kb
+	App Total 	= 5.859ms
+	Total 		= 17.536kb

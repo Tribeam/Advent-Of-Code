@@ -1,0 +1,144 @@
+------------------------BOOT------------------------
+Params:
+	Year 		= 2023
+	Day 		= 7
+Paths:
+	Full 		= E:/GitHub/Advent-Of-Code/apps/2023/day7
+	Relative 	= /apps/2023/day7
+	App Rel 	= /apps/2023/day7/app
+	App Full 	= E:/GitHub/Advent-Of-Code/apps/2023/day7/app.lua
+	Input 		= E:/GitHub/Advent-Of-Code/apps/2023/day7/in.txt
+	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day7/ex1.txt
+	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2023/day7/ex2.txt
+	Output 		= E:/GitHub/Advent-Of-Code/apps/2023/day7/out.txt
+	Jumbo 		= E:/GitHub/Advent-Of-Code/apps/2023/day7/jumbo.txt
+
+------------------------INPUT-----------------------
+Sizes:
+	Input 		= 9893
+	Example1 	= 48
+	Example2 	= 0
+	Jumbo 		= 0
+Lines:
+	Input 		= 1000
+	Example1 	= 5
+	Example2 	= 0
+	Jumbo 		= 0
+
+------------------------APP-------------------------
+Options:
+	Input 		= example
+
+------------------------PART1-----------------------
+App Message: 1: 
+App Message:   1: 
+App Message:     numbers: 
+App Message:       1: 3
+App Message:       2: 2
+App Message:       3: 10
+App Message:       4: 3
+App Message:       5: 13
+App Message:     bid: 765
+App Message:     counts: 
+App Message:       2: 1
+App Message:       3: 2
+App Message:       10: 1
+App Message:       13: 1
+App Message:     raw: 32T3K 765
+App Message:     line: 32A3D
+App Message:     strength: 1
+App Message: 2: 
+App Message:   1: 
+App Message:     numbers: 
+App Message:       1: 13
+App Message:       2: 13
+App Message:       3: 6
+App Message:       4: 7
+App Message:       5: 7
+App Message:     bid: 28
+App Message:     counts: 
+App Message:       7: 2
+App Message:       13: 2
+App Message:       6: 1
+App Message:     raw: KK677 28
+App Message:     line: DD677
+App Message:     strength: 2
+App Message:   2: 
+App Message:     numbers: 
+App Message:       1: 13
+App Message:       2: 10
+App Message:       3: 11
+App Message:       4: 11
+App Message:       5: 10
+App Message:     bid: 220
+App Message:     counts: 
+App Message:       11: 2
+App Message:       13: 1
+App Message:       10: 2
+App Message:     raw: KTJJT 220
+App Message:     line: DABBA
+App Message:     strength: 2
+App Message:   3: 
+App Message:     numbers: 
+App Message:       1: 12
+App Message:       2: 12
+App Message:       3: 12
+App Message:       4: 11
+App Message:       5: 14
+App Message:     bid: 483
+App Message:     counts: 
+App Message:       11: 1
+App Message:       14: 1
+App Message:       12: 3
+App Message:     raw: QQQJA 483
+App Message:     line: CCCBE
+App Message:     strength: 2
+App Message:   4: 
+App Message:     numbers: 
+App Message:       1: 10
+App Message:       2: 5
+App Message:       3: 5
+App Message:       4: 11
+App Message:       5: 5
+App Message:     bid: 684
+App Message:     counts: 
+App Message:       11: 1
+App Message:       10: 1
+App Message:       5: 3
+App Message:     raw: T55J5 684
+App Message:     line: A55B5
+App Message:     strength: 2
+App Message: 3: 
+App Message: 4: 
+App Message: 5: 
+App Message: 6: 
+App Message: 7: 
+App Message: 6833
+
+------------------------PART2-----------------------
+
+------------------------END-------------------------
+Times:
+	Boot 		= 0.121ms
+	Input 		= 0.446ms
+	Input Ex1 	= 0.101ms
+	Input Ex2 	= 0.067ms
+	Input Jumbo = 0.055ms
+	Input Total = 0.675ms
+	App Load 	= 3.850ms
+	Part 1 		= 32.325ms
+	Part 2 		= 0.000ms
+	App Total 	= 32.325ms
+	Total 		= 40.495ms
+Memory:
+	Boot 		= 0.793kb
+	Input 		= 83.367kb
+	Input Ex1 	= 0.547kb
+	Input Ex2 	= 0.227kb
+	Input Jumbo = 0.273kb
+	Input Total = 84.961kb
+	App Load 	= 6.690kb
+	Part 1 		= 28.328kb
+	Part 2 		= 0.109kb
+	App Total 	= 28.438ms
+	Total 		= 124.495kb

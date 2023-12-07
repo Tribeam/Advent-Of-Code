@@ -21,7 +21,7 @@ function app:part1(lines, raw, part2)
     table.remove(splits[1], 1)
     table.remove(splits[2], 1)
     for i, v in ipairs(splits[1]) do
-        races[i] = { time=splits[1][i], dist=splits[2][i] }
+        races[i] = { time=tonumber(splits[1][i]), dist=tonumber(splits[2][i]) }
     end
 
     -- lets put "the only race" as the last race
@@ -36,7 +36,9 @@ function app:part1(lines, raw, part2)
         races[the_only_race].time = races[the_only_race].time .. races[r].time
         races[the_only_race].dist = races[the_only_race].dist .. races[r].dist
     end
-
+    races[the_only_race].time = tonumber(races[the_only_race].time)
+    races[the_only_race].dist = tonumber(races[the_only_race].dist)
+    
     -- for each race
     for r = 1, #races do
 
@@ -47,7 +49,7 @@ function app:part1(lines, raw, part2)
             local movetime = races[r].time-h
             local movedist = h*movetime
 
-            if(movedist > tonumber(races[r].dist)) then
+            if(movedist > races[r].dist) then
                 races[r].wins = races[r].wins + 1
             end
         end
