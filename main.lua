@@ -9,7 +9,7 @@ bootstrap =
     params =
     {
         year = 2023,            -- year to load
-        day = 7,                -- day to load
+        day = 8,                -- day to load
     },
 
     -- all the paths

@@ -1,0 +1,61 @@
+------------------------BOOT------------------------
+Params:
+	Year 		= 2023
+	Day 		= 8
+Paths:
+	Full 		= E:/GitHub/Advent-Of-Code/apps/2023/day8
+	Relative 	= /apps/2023/day8
+	App Rel 	= /apps/2023/day8/app
+	App Full 	= E:/GitHub/Advent-Of-Code/apps/2023/day8/app.lua
+	Input 		= E:/GitHub/Advent-Of-Code/apps/2023/day8/in.txt
+	Example 1 	= E:/GitHub/Advent-Of-Code/apps/2023/day8/ex1.txt
+	Example 2 	= E:/GitHub/Advent-Of-Code/apps/2023/day8/ex2.txt
+	Output 		= E:/GitHub/Advent-Of-Code/apps/2023/day8/out.txt
+	Jumbo 		= E:/GitHub/Advent-Of-Code/apps/2023/day8/jumbo.txt
+
+------------------------INPUT-----------------------
+Sizes:
+	Input 		= 11820
+	Example1 	= 122
+	Example2 	= 0
+	Jumbo 		= 0
+Lines:
+	Input 		= 680
+	Example1 	= 9
+	Example2 	= 0
+	Jumbo 		= 0
+
+------------------------APP-------------------------
+Options:
+	Input 		= input
+
+------------------------PART1-----------------------
+App Message: 12599
+
+------------------------PART2-----------------------
+
+------------------------END-------------------------
+Times:
+	Boot 		= 0.174ms
+	Input 		= 0.298ms
+	Input Ex1 	= 0.083ms
+	Input Ex2 	= 0.055ms
+	Input Jumbo = 0.046ms
+	Input Total = 0.487ms
+	App Load 	= 4.544ms
+	Part 1 		= 1.479ms
+	Part 2 		= 0.000ms
+	App Total 	= 1.479ms
+	Total 		= 10.152ms
+Memory:
+	Boot 		= 0.793kb
+	Input 		= 63.574kb
+	Input Ex1 	= 0.832kb
+	Input Ex2 	= 0.227kb
+	Input Jumbo = 0.273kb
+	Input Total = 65.453kb
+	App Load 	= 4.997kb
+	Part 1 		= 222.731kb
+	Part 2 		= 0.109kb
+	App Total 	= 222.841ms
+	Total 		= 297.697kb
